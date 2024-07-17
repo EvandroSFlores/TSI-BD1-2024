@@ -41,10 +41,20 @@ VALUES ('Evandro', 'evandro@gmail.com', 100, 'Rua das Acacias', 160, 'Cidade Jar
 SELECT * FROM cliente;
 
 
-UPDATE nome_tabela SET
-    nome_col1 = val_col1,
-    .....
-    nome_coln = val_coln
-WHERE condicoes
+ -- ATUALIZA TABELA CIDADE
+UPDATE cidade SET
+    nome = 'Belo Horizonte',
+    estado = 'MG'    
+WHERE id = 1;
 
-Exemplo:
+ -- UPDATE TABELA CLIENTE
+UPDATE cliente SET
+    nome = 'Pedro',
+    email = 'pedro@gmail.com',
+    id_cidade = 101
+WHERE id = 2;
+
+
+ -- DELETA REGISTRO CIDADE
+DELETE FROM cidade WHERE id = 1;
+
