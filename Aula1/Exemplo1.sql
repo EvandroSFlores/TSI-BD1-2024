@@ -32,8 +32,8 @@ INSERT INTO cidade (id, nome, estado) VALUES (100, 'Aracatuba', 'SP');
 INSERT INTO cidade (nome, estado) VALUES ('Guararapes', 'SP');
 INSERT INTO cidade (nome) VALUES ('Rio de Janeiro');
 
+-- SELECIONE TODAS AS COLUNAS QUE REFERENCIAM CIDADE // MOSTRA OS VALORES
 SELECT * FROM cidade;
-
 
 INSERT INTO cliente (nome, email, id_cidade, endereco, numero, bairro, data_nasc)
 VALUES ('Evandro', 'evandro@gmail.com', 100, 'Rua das Acacias', 160, 'Cidade Jardim', '2000/04/04');
