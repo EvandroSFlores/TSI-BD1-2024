@@ -1,18 +1,18 @@
 
 
-CREATE DATABASE Mercado_Evandro
+CREATE DATABASE mercado_evandro
 DEFAULT CHARSET = utf8
 DEFAULT COLLATE = utf8_general_ci;
 
-USE Mercado_Evandro
+USE mercado_evandro
 
 CREATE TABLE fornecedor(
     codigo_fornec INT AUTO_INCREMENT,
     nome VARCHAR(40) NOT NULL,
     fone VARCHAR(20),
     endereco VARCHAR(40),
-    cidade VARCHAR(30) DEFAULT "Birigui",
-    estado  VARCHAR(2) DEFAULT "SP",
+    cidade VARCHAR(30) DEFAULT 'Birigui',
+    estado  VARCHAR(2) DEFAULT 'SP',
     PRIMARY KEY (codigo_fornec)
 );
 
@@ -109,3 +109,102 @@ DELETE FROM fornecedor WHERE estado != 'SP' AND pais = 'Brasil';
 
 SELECT * FROM fornecedor;
 
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE DATABASE escritorio_evandro
+DEFAULT CHARSET = utf8
+DEFAULT COLLATE = utf8_general_ci;
+
+USE escritorio_evandro
+
+CREATE TABLE gerente(
+    cod_gerente INT AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(40),
+    num_depto INT,
+    PRIMARY KEY (cod_gerente)
+);
+
+CREATE TABLE empregado(
+    cod_empregado INT AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(40),
+    endereco VARCHAR(40),
+    telefone VARCHAR(30),
+    data_admissao DATETIME,
+    num_depto INT,
+    salario DECIMAL(10,2),
+    PRIMARY KEY (cod_empregado)
+);
+
+CREATE TABLE projeto(
+    num_proj INT NOT NULL,
+    nome VARCHAR(40),
+    descricao VARCHAR(80),
+    num_depto INT,
+    PRIMARY KEY (num_proj)
+);
+
+CREATE TABLE departamento(
+    num_depto INT NOT NULL,
+    nome VARCHAR(40),
+    localizacao VARCHAR(40),
+    PRIMARY KEY (num_depto)
+);
+
+CREATE TABLE trabalha_em(
+    cod_empregado INT AUTO_INCREMENT NOT NULL,
+    num_proj INT,
+    total_horas_semanais DECIMAL(10,2),
+    CONSTRAINT FK_trabalha_empregado
+    FOREIGN KEY (cod_empregado)
+    REFERENCES empregado (cod_empregado),
+    CONSTRAINT FK_trabalha_projeto
+    FOREIGN KEY (num_proj)
+    REFERENCES projeto (num_proj)
+);
+
+INSERT INTO gerente(nome, num_depto)
+VALUES ('Felipe', 123);
+INSERT INTO gerente(nome, num_depto)
+VALUES ('Leonardo', 456);
+INSERT INTO gerente(nome, num_depto)
+VALUES ('Bruno', 789);
+
+INSERT INTO empregado(nome, endereco, telefone, data_admissao, num_depto, salario)
+VALUES ('Evandro', 'Rua das Alfazemas', '(18) 99621-3421', '2005-04-20', 123, 12.50);
+INSERT INTO empregado(nome, endereco, telefone, data_admissao, num_depto, salario)
+VALUES ('Robson', 'Rua dos Banzeiros', '(18) 99621-2143', '2002-05-17', 456, 10.00);
+INSERT INTO empregado(nome, endereco, telefone, data_admissao, num_depto, salario)
+VALUES ('Excalibur', 'Rua do Terra', '(18) 99612-3321', '1990-01-19', 789, 12.32);
+
+INSERT INTO projeto(num_proj, nome, descricao, num_depto)
+VALUES (96019, 'Bau', 'Abre e fecha', 123);
+INSERT INTO projeto(num_proj, nome, descricao, num_depto)
+VALUES (43, 'Porta', 'Entra e sai', 456);
+INSERT INTO projeto(num_proj, nome, descricao, num_depto)
+VALUES (3, 'Lampada', 'Liga e desliga', 789);
+
+INSERT INTO departamento(num_depto, nome, localizacao)
+VALUES (123, 'Baus', 'Rua das madeiras');
+INSERT INTO departamento(num_depto, nome, localizacao)
+VALUES (456, 'Ferro', 'Rua dos ferros');
+INSERT INTO departamento(num_depto, nome, localizacao)
+VALUES (789, 'Vidro', 'Rua das luzes');
+
+INSERT INTO trabalha_em(num_proj, total_horas_semanais)
+VALUES (96019, 24);
+INSERT INTO trabalha_em(num_proj, total_horas_semanais)
+VALUES (43, 72);
+INSERT INTO trabalha_em(num_proj, total_horas_semanais)
+VALUES (3, 148);
+
+SELECT * FROM gerente;
+
+SELECT * FROM empregado;
+
+SELECT * FROM projeto;
+
+SELECT * FROM departamento;
+
+SELECT * FROM trabalha_em;
