@@ -199,12 +199,18 @@ VALUES (43, 72);
 INSERT INTO trabalha_em(num_proj, total_horas_semanais)
 VALUES (3, 148);
 
-SELECT * FROM gerente;
+SELECT nome, localizacao FROM departamento;
 
-SELECT * FROM empregado;
+SELECT * FROM empregado WHERE salario > 2999;
 
-SELECT * FROM projeto;
+SELECT nome FROM gerente;
 
-SELECT * FROM departamento;
+SELECT nome, salario, salario*1.1 AS salario_atualizado FROM empregado;
 
-SELECT * FROM trabalha_em;
+UPDATE empregado SET salario = salario + (salario * 1.1);
+
+ALTER TABLE projeto ADD tipo_projeto VARCHAR(15);
+
+UPDATE projeto SET tipo_projeto = 'grande';
+
+SELECT tipo_projeto FROM projeto;
