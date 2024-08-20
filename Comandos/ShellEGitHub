@@ -1,0 +1,12 @@
+/*
+1. ABRIR SHELL NO XAMPP
+2. RODAR O SEGUINTE COMANDO
+mysql -h localhost -u root
+3. RODAR COMANDO PARA EXIBIR BANCOS CRIADOS
+SHOW SCHEMAS;
+*/
+
+/*
+ git config --global user.email "you@example.com"
+ git config --global user.name "Your Name"
+*/

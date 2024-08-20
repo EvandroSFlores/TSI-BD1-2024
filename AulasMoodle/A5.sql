@@ -1,0 +1,6 @@
+/*
+AGRUPAMENTO DE DADOS (GROUP BY)
+
+GROUP BY nome coluna
+HAVING condição
+*/
